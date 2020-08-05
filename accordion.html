@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+
+    <!-- Start:: style -->
+    <style>
+        * {margin: 0;}
+        body {display: flex; justify-content: center; align-items: center;}
+        .wrap {width: 500px; background-color: #fffcf7; margin-top: 20px; border: 1px solid tomato; border-top-width: 20px;padding: 2px;}
+        .wrap .title {padding: 20px; text-transform: uppercase; color: tomato;}
+        .wrap .accordion_menu {padding-left: 0;}
+        .wrap .accordion_menu li{list-style-type: none; padding:0 20px;}
+        .wrap .accordion_menu li:hover {background-color:#fff8ed;}
+        .accordion_menu li h2 {color: tomato; padding: 20px 0; border-top: 1px dotted #eeeeee; cursor: pointer;}
+        .accordion_menu li p {margin-bottom: 20px; display: none;}
+        .accordion_menu li p.on {display: block;}
+    </style>
+    <!-- End:: style -->
+</head>
+<body>
+    <!-- Start:: contents -->
+    <div class="wrap">
+        <h1 class="title">2depth Accordion menu</h1>
+        <ul class="accordion_menu">
+            <li>
+                <h2 class="accordion_title">HTML</h2>
+                <p>
+                    1: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita voluptatem nemo veniam accusamus ipsam atque ad dicta harum, quo sunt officiis cum. Alias deleniti nobis quam neque. Eum, quia ducimus?
+                </p>
+            </li>
+            <li>
+                <h2 class="accordion_title">CSS</h2>
+                <p>
+                    2: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita voluptatem nemo veniam accusamus ipsam atque ad dicta harum, quo sunt officiis cum. Alias deleniti nobis quam neque. Eum, quia ducimus?
+                </p>
+            </li>
+            <li>
+                <h2 class="accordion_title">Javascript</h2>
+                <p>
+                    3: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita voluptatem nemo veniam accusamus ipsam atque ad dicta harum, quo sunt officiis cum. Alias deleniti nobis quam neque. Eum, quia ducimus?
+                </p>
+            </li>
+        </ul>
+    </div>
+    <!-- End:: contents -->
+
+    <!-- Start:: script-->
+    <script>
+
+        const accordionMenu = document.querySelector('.accordion_menu');
+
+        let currentItem;
+
+        // menu description 활성화
+        function showMenu(elm) {
+            elm.classList.add('on');
+            currentItem = elm;
+        }
+
+        // menu description 비활성화
+        function hideMenu(elm) {
+            elm.classList.remove('on');
+        }
+
+        function showAndHide(target) { 
+            const para = target.nextElementSibling;
+
+            if (currentItem) {
+                hideMenu(currentItem);
+            }
+
+            if (para) {
+                showMenu(para);
+            }
+        }
+
+
+        function accordionHandlr(event) {
+            const target = event.target;
+            const classNameChk = target.classList.contains('accordion_title');
+
+            // 내가 클릭한 요소에 클래스 네임 'accordion_title'이 존재할 때만 showAndHide 함수 실행
+            if(classNameChk) {
+                showAndHide(target);
+            }
+        } 
+
+        accordionMenu.addEventListener('click', accordionHandlr)
+
+    </script>
+    <!-- End:: script -->
+</body>
+</html>
