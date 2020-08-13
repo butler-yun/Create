@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Example</title>
+
+    <!-- Start:: style -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0; 
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .todoWrap {
+            height: 300px;
+            border: 3px solid #000000;
+            display: flex;
+        }
+
+        .todoWrap div {
+            width: 300px;
+            padding: 30px 10px;
+        }
+
+        .todoWrap .lists {
+            padding: 20px;
+        }
+
+        .todoWrap .lists .title {
+            margin-bottom: 20px;
+        }
+
+        .todoWrap .lists .todo {
+            color: #cccccc;
+            background-color: #eeeeee;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        .todoWrap .lists .todo:hover {
+            color: #ffffff;
+            background-color: #cccccc;
+        }
+
+        .todoWrap .dropArea {
+            background-color: #61980a;
+        }
+
+        .todoWrap .dropArea .todo {
+            color: #ffffff;
+            background-color: yellowgreen;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+    <!-- End::  style -->
+</head>
+<body>
+    <!-- Start:: contents -->
+    <div id="content" class="todoWrap">
+        <div class="lists">
+            <h1 class="title">To Do List</h1>
+            <!-- 드래그 앤 드롭 이벤트를 위해 draggble 속성 추가. -->
+            <div id="toDoList_1" class="todo" draggable="true">To Do List 1</div>
+            <div id="toDoList_2" class="todo" draggable="true">To Do List 2</div>
+            <div id="toDoList_3" class="todo" draggable="true">To DO List 3</div>
+            <div id="toDoList_4" class="todo" draggable="true">To Do List 4</div>
+        </div>
+        <div class="dropArea" draggable="true">
+            <!-- 드래그 요소가 드래그 되는 공간 -->
+        </div>
+    </div>
+    <!-- End:: contents -->
+
+    <!-- Start:: script -->
+    <script>
+
+        const toDoLists = document.querySelector('.lists');
+        const dropArea = document.querySelector('.dropArea');
+
+        // drag event
+        function drag(event) {
+            console.log('drag');
+        }
+
+         // dragstart event
+        function dragStart(event) {
+            // 이벤트 대상 this === .todo elements
+            const that = this;
+
+            // 요소를 드래그할 때 마우스에 썸네일이 붙는데, 아래는 썸네일을 변경하는 코드.
+            // 현재 썸네일 이미지와 변경할 요소가 같으므로 이미지 변경이 되지 않음. 그냥 넣어봄. 
+            // 매게변수 차례대로 (images, offsetX, offsetY).
+            event.dataTransfer.setDragImage(that, 0, 0);
+
+            // dropArea에 draggble요소가 drop되기 위해 dataTransfer.setData 속성으로 요소의 아이디 값을 담는다.
+            // 첫번째 매개변수는 이름(변수).
+            event.dataTransfer.setData('list', that.id);
+        }
+
+        // drop event
+        function drop(event) {
+            // 위 dragstart 이벤트에서 설정한 list를 dataTransfer.getData 속성으로 가져온다.
+            const target = event.dataTransfer.getData('list');
+
+            // 이벤트 동작을 막고,
+            event.preventDefault();
+
+            // dropArea에 append 시켜준다.
+            dropArea.appendChild(document.getElementById(target));
+        }
+
+        // dragover event
+        function dragover(event) {
+            // drop event가 정상 작동하기 위해 이벤트 동작을 막는다.
+            event.preventDefault();
+        }
+
+        // 이벤트 타겟이 클래스 'todo'를 가지고 있는지 확인 후 드래그 이벤트 실행.
+        // 클래스가 없다면 아무일도 일어나지 않음.
+        function onDragHandlr(event) {
+            const target = event.target;
+            const targetName = target.classList.contains('todo');
+            
+            if (targetName) {
+                target.addEventListener('drag', drag, false);
+                target.addEventListener('dragstart', dragStart, false);
+            }
+        }
+
+        toDoLists.addEventListener('mouseover', onDragHandlr);
+        dropArea.addEventListener('drop', drop, false);
+        dropArea.addEventListener('dragover', dragover, false);
+    </script>
+    <!-- End:: script -->
+</body>
+</html>
