@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snow Drop</title>
+    
+    <!-- Start:: style -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        .title {
+            position: absolute;
+            top: 200px;
+            left: 250px;
+            color: #ffffff;
+        }
+
+        .desc {
+            position: absolute;
+            top: 260px;
+            left: 250px;
+            color: #ffffff;
+            width: 32%;
+        }
+    </style>
+    <!-- End:: style -->
+</head>
+<body>
+    <h1 class="title">Hellow, a Snowy day♡</h1>
+    <p class="desc">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem enim at itaque illum, explicabo, accusantium velit optio quibusdam autem sint fugit sit commodi neque beatae omnis qui assumenda aut quae?
+    </p>
+    <canvas id="canvas"></canvas>
+
+    <!-- Start:: script -->
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const max = 30;
+        const flakes = [];
+
+        // canvas 크기 지정
+        canvas.width = width;
+        canvas.height = height;
+
+        // flakes 배열에 눈송이 정보가 담긴 객체를 담는다.
+        for(let i = 0; i <= max; i += 1) {
+            flakes.push({
+                x: Math.random()*width, // 가로 좌표
+                y: Math.random()*height, // 세로 좌표
+                r: Math.random()*4+1, // 반지름
+                d: Math.random()*max,  // 입자
+            });
+
+        }
+
+        // 캔버스에 눈송이 그리기.
+        function drawFlakes() {
+
+            ctx.fillStyle = `#ff2020`; // 배경색
+            ctx.fillRect(0, 0, width, height); // 배경 칠하기
+            // clearRect(x, y, width, height)
+
+            ctx.beginPath(); // 경로 생성. 새로운 경로를 만든다. 
+
+            for (let i = 0; i <= max; i += 1) {
+                const flake = flakes[i];
+                
+                ctx.moveTo(flake.x, flake.y);
+                // (그림을 그리지 않은 채) 펜을 내가 지정한 좌표로 옮긴다.
+                ctx.fillStyle = `rgba(255, 255, 255, 0.9)`;
+                // 눈송이의 색에 랜덤으로 알파값 부여.
+                ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI*2, true);
+                // arc(x, y, 반지름, 시작각도, 종료각도, 그리는 방향) 
+                // true -> 반시계방향, false -> 시계방향
+            }
+            ctx.closePath(); // 경로 닫기.
+            ctx.fill();
+        }
+
+        function update(){
+            for(i = 0; i < max; i += 1) {
+                const flake = flakes[i];
+                
+                flake.y += flake.r*0.2;
+                // y 값 증가 - 눈송이가 위에서 아래로 떨어짐.
+
+                if(flake.y >= canvas.height) {
+                    flake.y = -10;
+                    // 눈송이가 캔버스를 벗어나면 다시 위에서 떨어지게 한다.
+                }
+            }
+            drawFlakes();
+        }
+        
+        // 0.02초마다 update 함수 호출
+        setInterval(update, 20)
+
+        function resizeCanvase() {
+            // 브라우저에 가로 및 세로폭에 맞춰 캔버스 크기 조절
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvase);
+    </script>
+    <!-- End:: script -->
+</body>
+</html>
