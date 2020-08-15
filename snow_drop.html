@@ -60,7 +60,7 @@
                 x: Math.random()*width, // 가로 좌표
                 y: Math.random()*height, // 세로 좌표
                 r: Math.random()*4+1, // 반지름
-                d: Math.random()*max,  // 입자
+                s: Math.random()*max,  // 속도
             });
 
         }
@@ -93,7 +93,7 @@
             for(i = 0; i < max; i += 1) {
                 const flake = flakes[i];
                 
-                flake.y += flake.r*0.2;
+                flake.y += flake.s*0.2;
                 // y 값 증가 - 눈송이가 위에서 아래로 떨어짐.
 
                 if(flake.y >= canvas.height) {
@@ -103,7 +103,7 @@
             }
             drawFlakes();
         }
-        
+
         // 0.02초마다 update 함수 호출
         setInterval(update, 20)
 
