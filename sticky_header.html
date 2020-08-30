@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky header</title>
+
+    <!-- Start:: link css -->
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- End:: link Css -->
+
+    <!-- Start:: style -->
+    <style>
+        .header .header_img {
+            width: 100%;
+            height: 250px;
+            background: url('images/img_05.jpg') no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .header .gnb {
+            width: 100%;
+            padding: 0 20px;
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .header .title {
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .header .menus {
+            display: flex;
+        }
+        
+        .header .menus li a{
+            display: block;
+            padding: 20px 15px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .header .menus li a:hover {
+            color: tomato;
+        }
+
+        .header .menus li:last-child a {
+            padding-right: 0;
+        }
+
+        .wrap {
+            background-color: #eee;
+        }
+
+        .wrap .desc {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .wrap .desc .img_banner {
+            width: 100%;
+            height: 200px;
+            background: url('images/img_04.jpg') no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .wrap .desc p {
+            margin: 24px 0;
+        }
+
+        .wrap .desc p:first-child {
+            margin-top: 0;
+        }
+
+        .sticky_header {
+            position: fixed;
+            top: 0;
+            z-index: 10;
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+
+        .visible {
+            visibility: visible;
+        }
+    </style>
+    <!-- End:: style -->
+</head>
+<body>
+    <!-- Start:: header -->
+    <header class="header">
+        <div class="header_img">
+        </div>
+
+        <nav class="gnb">
+            <h1 class="title hidden">Hello world</h1>
+            
+            <ul class="menus">
+                <li>
+                    <a href="#none">menu1</a>
+                </li>
+                <li>
+                    <a href="#none">menu2</a>
+                </li>
+                <li>
+                    <a href="#none">menu3</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- End:: contents -->
+
+    <!-- Start:: contents -->
+    <div class="wrap">
+        <div class="desc">
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia neque iure saepe nesciunt, consequatur facilis ut ratione minima fugiat. Sint, facere? Aliquam reiciendis quos quisquam ad mollitia ut voluptates doloribus ullam debitis iusto. Consequuntur vitae debitis reiciendis voluptatibus? Optio esse in, a ipsa, consequatur dolorum at molestiae vero minus magnam numquam odit dolore, eveniet consequuntur mollitia corporis dignissimos doloribus? Corrupti ab repellat perferendis rerum velit ut fugiat incidunt corporis quisquam doloribus nobis minus quibusdam provident possimus accusantium, tempora ex ullam suscipit totam omnis a eius ea cumque tempore! Rerum accusantium voluptas aut dignissimos cum architecto aliquid esse, quo ducimus aspernatur!
+            </p>
+
+            <div class="img_banner"></div>
+
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia neque iure saepe nesciunt, consequatur facilis ut ratione minima fugiat. Sint, facere? Aliquam reiciendis quos quisquam ad mollitia ut voluptates doloribus ullam debitis iusto. Consequuntur vitae debitis reiciendis voluptatibus? Optio esse in, a ipsa, consequatur dolorum at molestiae vero minus magnam numquam odit dolore, eveniet consequuntur mollitia corporis dignissimos doloribus? Corrupti ab repellat perferendis rerum velit ut fugiat incidunt corporis quisquam doloribus nobis minus quibusdam provident possimus accusantium, tempora ex ullam suscipit totam omnis a eius ea cumque tempore! Rerum accusantium voluptas aut dignissimos cum architecto aliquid esse, quo ducimus aspernatur!
+
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum aliquid excepturi deleniti quos eveniet atque voluptatibus, illo corporis magnam officiis. Velit quasi aspernatur vitae laborum iste, labore, incidunt temporibus eveniet sunt molestias ratione voluptate tempore a ipsum rerum itaque! Nemo, praesentium magni suscipit impedit repudiandae architecto delectus quia cum velit.
+            </p>
+
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia neque iure saepe nesciunt, consequatur facilis ut ratione minima fugiat. Sint, facere? Aliquam reiciendis quos quisquam ad mollitia ut voluptates doloribus ullam debitis iusto. Consequuntur vitae debitis reiciendis voluptatibus? Optio esse in, a ipsa, consequatur dolorum at molestiae vero minus magnam numquam odit dolore, eveniet consequuntur mollitia corporis dignissimos doloribus? Corrupti ab repellat perferendis rerum velit ut fugiat incidunt corporis quisquam doloribus nobis minus quibusdam provident possimus accusantium, tempora ex ullam suscipit totam omnis a eius ea cumque tempore! Rerum accusantium voluptas aut dignissimos cum architecto aliquid esse, quo ducimus aspernatur!
+            </p>
+
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta deleniti magni corrupti voluptas atque, cum alias. Ipsa pariatur atque dolor. Id molestias rerum, quas vero nihil culpa dolores consectetur, amet praesentium accusantium, aut ratione nostrum! Neque aliquam eos, labore itaque similique dignissimos ratione incidunt. Commodi optio, dicta iste dignissimos quo unde. Doloremque fugit obcaecati necessitatibus facere, neque quas dolorum illum libero unde deleniti modi architecto doloribus tenetur, earum aspernatur ipsam asperiores veritatis facilis quibusdam? Dolorum, maxime culpa nisi laborum nesciunt non aperiam debitis quaerat in sequi. Aliquid quae quis adipisci error at delectus accusantium? Beatae ex unde perspiciatis, reprehenderit autem, doloremque porro rerum blanditiis quibusdam earum tenetur dolor, non facere voluptates. Eum, dolorum facere deserunt porro, corporis ratione ullam dolor impedit nisi unde debitis nemo quia sunt rerum itaque repellendus! Nemo temporibus maiores praesentium reprehenderit unde ratione, cupiditate officia fugiat soluta corporis, placeat dolorum itaque ab quam tempora vero explicabo.
+            </p>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia neque iure saepe nesciunt, consequatur facilis ut ratione minima fugiat. Sint, facere? Aliquam reiciendis quos quisquam ad mollitia ut voluptates doloribus ullam debitis iusto. Consequuntur vitae debitis reiciendis voluptatibus? Optio esse in, a ipsa, consequatur dolorum at molestiae vero minus magnam numquam odit dolore, eveniet consequuntur mollitia corporis dignissimos doloribus? Corrupti ab repellat perferendis rerum velit ut fugiat incidunt corporis quisquam doloribus nobis minus quibusdam provident possimus accusantium, tempora ex ullam suscipit totam omnis a eius ea cumque tempore! Rerum accusantium voluptas aut dignissimos cum architecto aliquid esse, quo ducimus aspernatur!
+            </p>
+        </div>
+    </div>
+    <!-- End:: contents -->
+
+    <!-- Start:: script -->
+    <script>
+        function stickyHeader() {
+            const gnb = document.querySelector('.gnb');
+            const title = document.querySelector('.title');
+            const offsetY = window.scrollY;
+
+            const STICKY_CN = 'sticky_header';
+            const HIDDEN = 'hidden';
+            const VISIBLE = 'visible';
+
+            if (offsetY > 250) {
+                gnb.classList.add(STICKY_CN);
+                title.className = `title visible`;
+            } else {
+                gnb.classList.remove(STICKY_CN);
+                title.className = `title hidden`;
+            }
+        }
+
+        document.addEventListener('scroll', stickyHeader);
+    </script>
+    <!-- End:: script -->
+</body>
+</html>

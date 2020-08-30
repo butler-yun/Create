@@ -6,3 +6,4 @@
 - [x] Snow Drop
 - [x] break out game 
 - [x] scroll percentage with vertical line
+- [x] sticky header
