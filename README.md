@@ -4,6 +4,7 @@
 - [x] Background random change
 - [x] Drag and drop (basic!)
 - [x] Snow Drop
-- [x] break out game 
-- [x] scroll percentage with vertical line
-- [x] sticky header
+- [x] Break out game 
+- [x] Scroll percentage with vertical line
+- [x] Sticky header
+- [x] Masical 3D button

@@ -38,7 +38,7 @@
         .header .menus {
             display: flex;
         }
-        
+
         .header .menus li a{
             display: block;
             padding: 20px 15px;
@@ -161,6 +161,9 @@
             const HIDDEN = 'hidden';
             const VISIBLE = 'visible';
 
+            // 스크롤바의 위치가 250px을 넘어가면 
+            // gnb에 'sticky header' 클래스가 붙는다.
+            // 그리고 title의 클래스 이름이 'title visible'로 바뀐다.
             if (offsetY > 250) {
                 gnb.classList.add(STICKY_CN);
                 title.className = `title visible`;
